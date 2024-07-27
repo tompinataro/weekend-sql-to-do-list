@@ -18,3 +18,8 @@ app.use('/todos', todos);
 app.listen(PORT, () => {
   console.log('server running on: ', PORT);
 });
+
+// Server sends query to the Dbase to mark as complete = true
+// Result gets sent from the Dbase thru the router back to the server
+// Server sends response to client side
+// Client updates the DOM/html

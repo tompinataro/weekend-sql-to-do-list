@@ -1,4 +1,4 @@
-const router = require('express').Router();
+const todosRouter = require('express').Router();
 const pool = require('../modules/pool');
 
 // DB CONNECTION
@@ -16,6 +16,8 @@ todosRouter.get('/', (req, res) => {
     `
     pool.query(queryText)
     .then(dbResult => {
+
+// Send the SQL query's resulting data back to the client.
         res.send(dbResult.rows)
     })
     .catch(dbError => {
@@ -108,10 +110,3 @@ todosRouter.delete('/:id', (req, res) => {
 })
 
 module.exports = todosRouter;
-
-
-
-
-
-
-module.exports = router;

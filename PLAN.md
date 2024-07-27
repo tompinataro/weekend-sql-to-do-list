@@ -37,25 +37,27 @@ Inside the new database, run the CREATE TABLE and INSERT INTO queries found in d
 ⎷ Do npm install.
 ⎷ Confirm this :point_up_2: is all good to go by starting the server and opening http://localhost:5001 in the browser.
 
-⌴ Try running npm test to verify the tests run.
+⎷ Try running npm test to verify the tests run.
 
 ### A user can see their list of to-dos.
 
 ⎷ Make a <table> in index.html with the <thead> and <tbody> sections.
 
-⌴?test not pasing? When the DOM loads, our client.js file will need to execute a function that makes an HTTP GET /todos request.
+⎷ test not pasing? When the DOM loads, our client.js file will need to execute a function that makes an HTTP GET /todos request.
 
-⌻ In todos.router, make the router.get route.
+⎷ In todos.router, make the router.get route.
 
-⌻ The route we just made will need to send a SELECT * FROM SQL query (using pool.query()!) to the database. (To get the to-do items!)
+⎷ The route we just made will need to send a SELECT * FROM SQL query (using pool.query()!) to the database. (To get the to-do items!)
 
-⌻ Send the SQL query's resulting data back to the client.
+⎷ Send the SQL query's resulting data back to the client.
 
-⌴? When the data arrives client-side, need to loop through the array of objects and render a <tr> for each to-do item. (Inside the <tbody>.)
+⌴? When the data arrives client-side, 
+need to loop through the array of objects and 
+render a <tr> for each to-do item. (Inside the <tbody>.)
 
 ### A user can create a new to-do.
 
-⌴ Create a <form> in index.html with a single <input> for collecting to-do text and a submit `<button`>.
+⌻ Create a <form> in index.html with a single <input> for collecting to-do text and a submit `<button`>.
 
 ⌴ Need a function to run when the submit <button> gets clicked.
 
@@ -63,11 +65,11 @@ Inside the new database, run the CREATE TABLE and INSERT INTO queries found in d
 what the user typed into the input and make an HTTP POST /todos request that sends data that looks something like:
 {newTodoText: 'whatever the user typed'}
 
-⌴ In todos.router, make the router.post route.
+⌻ In todos.router, make the router.post route.
 
-⌴ The route we just made will need to send an INSERT INTO SQL query (using pool.query!) to the database. (To insert a new row.)
+⌻ The route we just made will need to send an INSERT INTO SQL query (using pool.query!) to the database. (To insert a new row.)
 
-⌴ If the INSERT INTO worked, send status 201 back to the client-side.
+⌻ If the INSERT INTO worked, send status 201 back to the client-side.
 When client-side receives status 201, need to call the function that gets the to-dos data and renders it.
 
 ### A user can delete to-do items.
@@ -78,9 +80,9 @@ When client-side receives status 201, need to call the function that gets the to
 ⌴ Using the onclick to make an http DELETE /todos request w/axios in client.js to server.js
 
 
-⌴ In todos.router, make the router.delete route
+⌻ In todos.router, make the router.delete route
 
-⌴ The route we just made will need to send a DELETE SQL query (using pool query!) to the database. (To delete a task/row.)  Remember that you'll need to include the todo id as a route parameter for the delete/put routes. 
+⌻ The route we just made will need to send a DELETE SQL query (using pool query!) to the database. (To delete a task/row.)  Remember that you'll need to include the todo id as a route parameter for the delete/put routes. 
 
 Example of that in here!
 https://github.com/PrimeAcademy/pinnacles-full-stack-get-post-delete-put
@@ -92,7 +94,7 @@ https://github.com/PrimeAcademy/pinnacles-full-stack-get-post-delete-put
 ### A user can mark to-do items as completed.
 
 ⌴ Create an onclick completed button for each to do item in html table
-Event makes an http request w/axios and .then to server (completed = TRUE)
+Event makes an http PUT request w/axios and .then to server (completed = TRUE)
 
 ⌴ Server sends query to the Dbase to mark as complete = true.
 

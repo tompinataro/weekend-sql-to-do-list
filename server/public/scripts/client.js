@@ -1,9 +1,10 @@
 console.log('JS is sourced!');
-showToDoList();
+getToDoList();
 
 // * When the DOM loads, our `client.js` file will need 
 //to execute a function that makes an HTTP `GET /todos` request.
-function showToDoList() {
+
+function getToDoList() {
     axios.get('/todos')
       .then(response => {
         let todoData = response.data;
@@ -18,14 +19,50 @@ function showToDoList() {
     
     } // end of showToDoList
 
-// Function to get the to-dos data and render it
-// Calling the function to render the initial to-do list
-  showToDoList();
 
-// Send the SQL query's resulting data back to the client.
+
+// ===================== DISPLAY IN HTML FUNCTION =====================
+
 // When the data arrives client-side, need to loop through the 
 // array of objects and render a <tr> for each to-do item. (
 // Inside the <tbody>.)
+
+function showToDolist(data) {
+  console.log('This is the data to be displayed. Is this correct?:', data);
+  let viewTodos = document.getElementById('viewTodos');
+
+  // IF ready_to_transfer === true, 'Ready for complete' button doesn't exist
+  // ELSE, 'Ready for Complete' button exists
+  viewTodos.innerHTML = '';
+  for(let task of data) {
+
+    console.log(`Is ${todo.text} complete? ${todos.ready_to_complete}`);
+    if(todos.ready_to_complete === true) {
+      viewTodos.innerHTML += `
+
+      <tr>
+        <td>${task.text}</td>
+        <td>${task.ready_to_complete}</td>
+\        <td><button onClick="readyTask(${task.id})">Complete Task</button></td>
+        <td><button onClick="deleteTask(${task.id})">Delete</button></td>
+      </tr>`;
+    
+    } else {
+      viewTodos.innerHTML += `
+
+      <tr>
+        <td>${task.text}</td>
+        <td>${task.ready_to_complete}</td>
+        <td><button onClick="readyTask(${task.id})">Ready to Complete</button></td>
+        <td><button onClick="deleteTask(${task.id})">Delete Task</button></td>
+      </tr>`;
+
+    } // end of IF statement
+    
+  } // end of FOR loop
+} // end of displayTodos
+
+// ===================== DELETE FUNCTION (Needs getTodos function in .then) =====================
 
 
 

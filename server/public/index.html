@@ -12,13 +12,17 @@
   <header>
     <h1>SQL TO-DO List</h1>
   </header>
-      <tbody>
-        <thead>
-          
-        </thead>
+    
+    <table>
+      <thead>
+        <tr>
+          <th>Task</th>
+          <th>Completed?</th>
+        </tr>
+      </thead>
+      <tbody id="viewTodos">
       </tbody>
-
-      <P>Enter new tasks here:</P>
+    </table>
 
     <form id="form">
           <input type="text" data-testid="toDoTextInput" placeholder="New Task">
@@ -30,9 +34,11 @@
       </form>
 </body>
  
-<!-- Create a <form> in index.html with a single <input> for collecting to-do text and a submit `<button`>.
+<!-- Create a <form> in index.html with a single <input> 
+  for collecting to-do text and a submit `<button`>.
   Need a function to run when the submit <button> gets clicked.
-  Function will need to get what the user typed into the input and make an HTTP POST /todos request that sends data that looks something like:
+  Function will need to get what the user typed into the input and m
+  ake an HTTP POST /todos request that sends data that looks something like:
   {newTodoText: 'whatever the user typed'} -->
 
   <!-- The tests **will not work** if you do not follow these steps.

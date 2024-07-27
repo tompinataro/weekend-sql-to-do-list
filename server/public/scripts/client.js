@@ -52,7 +52,7 @@ function showToDolist(data) {
 
       <tr>
         <td>${task.text}</td>
-        <td>${task.ready_to_complete}</td>
+        <td>${task.isComplete}</td>
         <td><button onClick="completeTask(${task.id})">Complete</button></td>
         <td><button onClick="deleteTask(${task.id})">Delete Task</button></td>
       </tr>`;

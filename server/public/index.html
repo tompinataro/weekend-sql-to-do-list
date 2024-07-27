@@ -17,11 +17,35 @@
           
         </thead>
       </tbody>
-</body>
 
+      <P>Enter new tasks here:</P>
+
+    <form id="form">
+          <input type="text" data-testid="toDoTextInput" placeholder="New Task">
+    <!-- //1. Add button onclick       -->
+          <button onclick="addtodo(event)" type="button" data-testid="submitButton"
+          >Add Todo</button>
+        </form>
+
+      </form>
+</body>
+ 
 <!-- Create a <form> in index.html with a single <input> for collecting to-do text and a submit `<button`>.
   Need a function to run when the submit <button> gets clicked.
   Function will need to get what the user typed into the input and make an HTTP POST /todos request that sends data that looks something like:
   {newTodoText: 'whatever the user typed'} -->
 
+  <!-- The tests **will not work** if you do not follow these steps.
+
+1. The input you use to collect "to-do text" user input must have:
+    * `data-testid="toDoTextInput"`
+2. The button that a user clicks to "create" a new to-do must have:
+  * `data-testid="submitButton"`
+
+
+
+
+
+
+  
 </html>

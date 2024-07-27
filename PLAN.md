@@ -51,9 +51,9 @@ Inside the new database, run the CREATE TABLE and INSERT INTO queries found in d
 
 ⎷ Send the SQL query's resulting data back to the client.
 
-⌴? When the data arrives client-side, 
-need to loop through the array of objects and 
-render a <tr> for each to-do item. (Inside the <tbody>.)
+⎷ When the data arrives client-side, 
+⌴ need to loop through the array of objects and 
+⌴ render a <tr> for each to-do item. (Inside the <tbody>.)
 
 ### A user can create a new to-do.
 

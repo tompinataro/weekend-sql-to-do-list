@@ -36,15 +36,15 @@ function showToDolist(data) {
   viewTodos.innerHTML = '';
   for(let task of data) {
 
-    console.log(`Is ${todo.text} complete? ${todos.ready_to_complete}`);
-    if(todos.ready_to_complete === true) {
+    console.log(`Is ${task.text} complete? ${task.isComplete}`);
+    if(task.isComplete === true) {
       viewTodos.innerHTML += `
 
       <tr>
         <td>${task.text}</td>
-        <td>${task.ready_to_complete}</td>
-\        <td><button onClick="readyTask(${task.id})">Complete Task</button></td>
-        <td><button onClick="deleteTask(${task.id})">Delete</button></td>
+        <td>${task.isComplete}</td>
+\        <td><button onClick="completeTask(${task.id})">Complete Task</button></td>
+        <td><button onClick="deleteTask(${task.id})">Delete Task</button></td>
       </tr>`;
     
     } else {
@@ -53,7 +53,7 @@ function showToDolist(data) {
       <tr>
         <td>${task.text}</td>
         <td>${task.ready_to_complete}</td>
-        <td><button onClick="readyTask(${task.id})">Ready to Complete</button></td>
+        <td><button onClick="completeTask(${task.id})">Complete</button></td>
         <td><button onClick="deleteTask(${task.id})">Delete Task</button></td>
       </tr>`;
 
@@ -63,10 +63,16 @@ function showToDolist(data) {
 } // end of displayTodos
 
 // ===================== DELETE FUNCTION (Needs getTodos function in .then) =====================
-
-
-
 // Create an onclick delete <button> 
+
+function deleteTask (){
+  console.log ("In deleteTask()")
+}// end of deleteTask()
+
+function completeTask (){
+  console.log ("In completeTask()")
+}// end of completeTask()
+
 // in the showToDoList()for each item in the to do list in client.js  
 // Using the onclick to make an http DELETE /todos request w/axios in client.js to server.js
 // Create an onclick completed button for each to do item in html table

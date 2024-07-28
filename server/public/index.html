@@ -12,13 +12,13 @@
   <header>
     <h1>SQL TO-DO List</h1>
   </header>
-  <section id="newTask">
+  <section id="addTask">
     <h2>Add New Task</h2>
     <form id="form">
-    <input type="text" data-testid="toDoTextInput" value="" placeholder="New Task">
-<!-- //1. Add button onclick       -->
-    <button onclick="addToDo(event)" type="button" data-testid="submitButton"
-      >Add Todo</button>
+    <input type="text" data-testid="toDoTextInput" id="toDoTextInput" value="" placeholder="New Task">
+    <!-- //1. Add button onclick       -->
+    <button onclick="addTask(event)" type="button" data-testid="submitButton"
+            id="addButton">Add Task</button>    
     </form>
   </section>
   <section>

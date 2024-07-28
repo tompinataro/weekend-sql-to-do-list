@@ -16,7 +16,7 @@ function getToDoList() {
       .catch((err) => {
         console.log('Error in getting data!', err);
       })
-    } // end of showToDoList
+    } // end of getToDoList
 
 
 
@@ -29,18 +29,18 @@ function showToDoList(data) {
   console.log('This is the data to be displayed. Is this correct?:', data);
   let viewTodos = document.getElementById('viewTodos');
 
-  // IF isComplete === true, 'Ready for complete' button doesn't exist
-  // ELSE, 'Ready for Complete' button exists
+  //***** */ IF isComplete === true, 'Complete' button doesn't exist
+  //***** */ ELSE, 'Complete' button exists
   viewTodos.innerHTML = '';
-  for(let task of data) {
-// for each object of the array
+  for(let task of data) { // for each object of the array
+    
     console.log(`Is ${task.text} complete? ${task.isComplete}`);
-    if(task.isComplete === true) { //putting the idtag on line 40 took 1hr w/Marcos 
+    if(task.isComplete === true) { //putting the idtag on line 40 took 1hr :/ 
       viewTodos.innerHTML += `
       <tr data-testid="toDoItem">  
         <td>${task.text}</td>
         <td>${task.isComplete}</td>
-        <td><button data-testid="completeButton" onClick="completeTask(${task.id})">Complete Task</button></td>
+        <td><button data-testid="completeButton" onClick="completeTask(${task.id})">Task Completed!</button></td>
         <td><button data-testid="deleteButton" onClick="deleteTask(${task.id})">Delete Task</button></td>
       </tr>`;
     
@@ -49,7 +49,7 @@ function showToDoList(data) {
       <tr>          
         <td>${task.text}</td>
         <td>${task.isComplete}</td>
-        <td><button data-testid="completeButton" onClick="completeTask(${task.id})">Complete</button></td>
+        <td><button data-testid="completeButton" onClick="completeTask(${task.id})">Complete Task?</button></td>
         <td><button data-testid="deleteButton" onClick="deleteTask(${task.id})">Delete Task</button></td>
       </tr>`;
 
@@ -61,15 +61,25 @@ function showToDoList(data) {
 // ===================== DELETE FUNCTION (Needs getTodos function in .then) =====================
 // Create an onclick delete <button> 
 
-function deleteTask (){
-  console.log ("In deleteTask()") 
-  function deleteTask(taskId) {
+console.log ("In deleteTask()") 
+function deleteTask(taskId) {
     console.log("This is the task's id in client:", taskId);
+   
+    Swal.fire({
+      title: "Are you sure you want to delete?",
+      showDenyButton: true,
+      showCancelButton: false,
+      confirmButtonText: "Yes, Delete",
+      denyButtonText: `No, Do Not Delete`
+    }).then((result) => {
   
+      if (result.isConfirmed) {
+        Swal.fire("Deleted", "", "success");
         axios({
           method: 'DELETE',
           url: `/todos/${taskId}`
         })
+
         .then((response) => {
           console.log(`${taskId} has been deleted:`, response);
       
@@ -78,10 +88,15 @@ function deleteTask (){
         .catch((err) => {
           console.log(`${taskId} did not get deleted:`, err);
         })
-}// end of deleteTask()
+      } else if (result.isDenied) {
+        Swal.fire("No Changes Made", "", "success");
+      }
+    });
+  
+  }
+  // end of deleteTask()
 
-
-function completeTask (){
+// ============ UPDATE COMPLETED STATUS ==================
   console.log ("In completeTask()")
 
   function isComplete(task_id) {
@@ -97,7 +112,7 @@ function completeTask (){
       console.log('error updating Transfer status',error)
     })
   }
-}// end of completeTask()
+// end of completeTask()
 
 // in the showToDoList()for each item in the to do list in client.js  
 // Using the onclick to make an http DELETE /todos request w/axios in client.js 
@@ -136,19 +151,18 @@ function completeTask (){
 // ===================== BUTTON && POST FUNCTION =====================
 
 function addTask (event){
+// gather input info in variables
   event.preventDefault();
   console.log("Submit Button Clicked");
   let task = document.getElementById('toDoTextInput').value;
-  let isComplete = document.getElementById('isComplete').value;
-  console.log("Variables Match:", task, isComplete);
+  console.log("Variables Match:", task);
 
   //Put variables into object (creates object)
 let newTask = {
-  task:task,
-  isComplete:isComplete
+  task: task
 }
 
-}
+
 
   console.log("Incoming Task:", newTask);
 
@@ -158,7 +172,7 @@ let newTask = {
   axios({
     method: 'POST',
     url: '/todos',
-    data: newTask     //newTask ? not defined...
+    data: newTask    
   }).then(function(response) {
     console.log(response.data);
     document.getElementById('form').reset();
@@ -170,8 +184,8 @@ let newTask = {
     alert('Error adding todos object. Please try again.')       
   });
 
-
 }
+
 
 
 

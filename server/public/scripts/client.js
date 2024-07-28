@@ -1,5 +1,5 @@
 console.log('JS is sourced!');
-getToDoList();
+getToDoList();  //calling the function upon DOM loading
 
 // * When the DOM loads, our `client.js` file will need 
 //to execute a function that makes an HTTP `GET /todos` request.
@@ -138,14 +138,14 @@ function completeTask (){
 function addTask (event){
   event.preventDefault();
   console.log("Submit Button Clicked");
-  let task = document.getElementById('TASKINPUTTEST ID HEREEEEEEE').value;
-  let isComplete = document.getElementById('iscomplete').value;
+  let task = document.getElementById('toDoTextInput').value;
+  let isComplete = document.getElementById('isComplete').value;
   console.log("Variables Match:", task, isComplete);
 
   //Put variables into object (creates object)
 let newTask = {
-  task:text,
-  isComplete:FALSE  
+  task:task,
+  isComplete:isComplete
 }
 
 }
@@ -163,8 +163,8 @@ let newTask = {
     console.log(response.data);
     document.getElementById('form').reset();
 
-    showToDoList();
-
+    getToDoList();
+    
   }).catch(function(error) {
     console.log('error in todosPOST', error); 
     alert('Error adding todos object. Please try again.')       

@@ -65,7 +65,7 @@ Inside the new database, run the CREATE TABLE and INSERT INTO queries found in d
 what the user typed into the input and make an HTTP POST /todos request that sends data that looks something like:
 {newTodoText: 'whatever the user typed'}
 
-⌻ In todos.router, make the router.post route.
+⎷ In todos.router, make the router.post route.
 
 ⌻ The route we just made will need to send an INSERT INTO SQL query (using pool.query!) to the database. (To insert a new row.)
 
@@ -75,7 +75,7 @@ what the user typed into the input and make an HTTP POST /todos request that sen
 ### A user can delete to-do items.
 
 
-⎷ Create an onclick delete <button> in the showToDoList()for each item in the to do list in client.js   
+⎷ Create an onclick delete <button> in showToDoList()for each item in the to do list in client.js   
 
 ⌴ Using the onclick to make an http DELETE /todos request w/axios in client.js to server.js
 
@@ -84,7 +84,7 @@ what the user typed into the input and make an HTTP POST /todos request that sen
 
 ⌻ The route we just made will need to send a DELETE SQL query (using pool query!) to the database. (To delete a task/row.)  
 
-⌴ Remember that you'll need to include the todo id as a route parameter for the delete/put routes. 
+⎷ Remember that you'll need to include the todo id as a route parameter for the delete/put routes. 
 
 Example of that in here!
 https://github.com/PrimeAcademy/pinnacles-full-stack-get-post-delete-put

@@ -35,15 +35,16 @@ function showToDolist(data) {
   // ELSE, 'Ready for Complete' button exists
   viewTodos.innerHTML = '';
   for(let task of data) {
-
+// for each object of the array
     console.log(`Is ${task.text} complete? ${task.isComplete}`);
     if(task.isComplete === true) {
+      
       viewTodos.innerHTML += `
 
-      <tr>
+      <tr data-testid="toDoItem">
         <td>${task.text}</td>
         <td>${task.isComplete}</td>
-\        <td><button onClick="completeTask(${task.id})">Complete Task</button></td>
+        <td><button onClick="completeTask(${task.id})">Complete Task</button></td>
         <td><button onClick="deleteTask(${task.id})">Delete Task</button></td>
       </tr>`;
     
@@ -66,11 +67,43 @@ function showToDolist(data) {
 // Create an onclick delete <button> 
 
 function deleteTask (){
-  console.log ("In deleteTask()")
+  console.log ("In deleteTask()") 
+  function deleteTask(taskId) {
+    console.log('This is the task\'s id in client:', taskId);
+  
+        axios({
+          method: 'DELETE',
+          url: `/todos/${taskId}`
+        })
+        .then((response) => {
+          console.log(`${taskId} has been deleted:`, response);
+      
+          showToDoList();
+        })
+        .catch((err) => {
+          console.log(`${taskId} did not get deleted:`, err);
+        })
 }// end of deleteTask()
+
 
 function completeTask (){
   console.log ("In completeTask()")
+
+  function isComplete(task_id) {
+    axios ({
+      method: 'PUT',
+      url: `/todos/${task_id}`,
+      data: {status: 'true'}
+    })
+    .then((response) => {
+      showToDoList();
+    })
+    .catch((error) => {
+      console.log('error updating Transfer status',error)
+    })
+  }
+
+
 }// end of completeTask()
 
 // in the showToDoList()for each item in the to do list in client.js  
@@ -90,9 +123,13 @@ function completeTask (){
 //         ```
 // 4. Each to-do item's "delete" button must have:
 //     * `data-testid="deleteButton"`
+
+
 //     * This button must be a child of the element that has the `data-testid="toDoItem"` on it.
 // 5. Each to-do item's "mark complete" button must have:
 //     * `data-testid="completeButton"`
+
+
 //     * This button must be a child of the element that has the `data-testid="toDoItem"` on it.
 // 6. Each completed to-do item must have:
 //     * A CSS class of `completed` applied to its `data-testid="toDoItem"` element.
@@ -103,3 +140,61 @@ function completeTask (){
 //           <div data-testid="toDoItem" class="completed">...</div>
 //           <article data-testid="toDoItem" class="completed">...</article>
 //         ``` -->
+
+
+
+
+
+
+
+ 
+
+
+// ============ UPDATE TRANSFER STATUS ==================
+
+
+
+
+
+// ===================== BUTTON && POST FUNCTION =====================
+
+function addTask (event){
+  event.preventDefault();
+  console.log("Submit Button Clicked");
+  let task = document.getElementById('TASKINPUTTEST ID HEREEEEEEE').value;
+  let isComplete = document.getElementById('iscomplete').value;
+  console.log("Variables Match:", task, isComplete);
+
+  //Put variables into object (creates object)
+let newTask = {
+  task:______,
+  isComplete:_____  
+}
+
+}
+
+  console.log("Incoming Task:", newTask);
+
+  
+
+  //Send object to server.js using axios
+  axios({
+    method: 'POST',
+    url: '/todos',
+    data: newTask
+  }).then(function(response) {
+    console.log(response.data);
+    document.getElementById('form').reset();
+
+    showToDoList();
+
+  }).catch(function(error) {
+    console.log('error in todosPOST', error); 
+    alert('Error adding todos object. Please try again.')       
+  });
+
+
+}
+
+
+

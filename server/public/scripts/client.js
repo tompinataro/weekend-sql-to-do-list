@@ -158,13 +158,13 @@ let newTask = {
   axios({
     method: 'POST',
     url: '/todos',
-    data: newTask     //newTask is not defined...
+    data: newTask     //newTask ? not defined...
   }).then(function(response) {
     console.log(response.data);
     document.getElementById('form').reset();
 
     getToDoList();
-    
+
   }).catch(function(error) {
     console.log('error in todosPOST', error); 
     alert('Error adding todos object. Please try again.')       

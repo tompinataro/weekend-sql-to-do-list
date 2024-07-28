@@ -12,7 +12,17 @@
   <header>
     <h1>SQL TO-DO List</h1>
   </header>
-    
+  <section id="newTask">
+    <h2>Add New Task</h2>
+    <form id="form">
+    <input type="text" data-testid="toDoTextInput" value="" placeholder="New Task">
+<!-- //1. Add button onclick       -->
+    <button onclick="addToDo(event)" type="button" data-testid="submitButton"
+      >Add Todo</button>
+    </form>
+  </section>
+  <section>
+    <h2>All Tasks</h2>
     <table>
       <thead>
         <tr>
@@ -23,19 +33,10 @@
       <tbody id="viewTodos">
       </tbody>
     </table>
+  </section>
+ </body>
+</html>
 
-    <form id="form">
-
-          <input type="text" data-testid="toDoTextInput" value="" placeholder="New Task">
-    <!-- //1. Add button onclick       -->
-          <button onclick="addtodo(event)" type="button" data-testid="submitButton"
-          >Add Todo</button>
-
-        </form>
-
-      </form>
-</body>
- 
 <!-- Create a <form> in index.html with a single <input> 
   for collecting to-do text and a submit `<button`>.
   Need a function to run when the submit <button> gets clicked.
@@ -56,4 +57,3 @@
 
 
   
-</html>

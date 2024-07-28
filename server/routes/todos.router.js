@@ -43,7 +43,7 @@ todosRouter.post('/', (req, res) => {
       INSERT INTO "todos" 
         ("text", "isComplete") 
         VALUES
-        ($1, $2);  //Sanitation
+        ($1, $2); 
     `;
     const sqlValues = [
       req.body.text,

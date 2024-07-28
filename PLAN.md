@@ -57,7 +57,7 @@ Inside the new database, run the CREATE TABLE and INSERT INTO queries found in d
 
 ### A user can create a new to-do.
 
-⌻ Create a <form> in index.html with a single <input> for collecting to-do text and a submit `<button`>.
+⎷ Create a <form> in index.html with a single <input> for collecting to-do text and a submit `<button`>.
 
 ⌴ Need a function to run when the submit <button> gets clicked.
 
@@ -70,19 +70,21 @@ what the user typed into the input and make an HTTP POST /todos request that sen
 ⌻ The route we just made will need to send an INSERT INTO SQL query (using pool.query!) to the database. (To insert a new row.)
 
 ⌻ If the INSERT INTO worked, send status 201 back to the client-side.
-When client-side receives status 201, need to call the function that gets the to-dos data and renders it.
+⌴ When client-side receives status 201, need to call the function that gets the to-dos data and renders it.
 
 ### A user can delete to-do items.
 
 
-⌴ Create an onclick delete <button> in the showToDoList()for each item in the to do list in client.js   
+⎷ Create an onclick delete <button> in the showToDoList()for each item in the to do list in client.js   
 
 ⌴ Using the onclick to make an http DELETE /todos request w/axios in client.js to server.js
 
 
-⌻ In todos.router, make the router.delete route
+⎷ In todos.router, make the router.delete route
 
-⌻ The route we just made will need to send a DELETE SQL query (using pool query!) to the database. (To delete a task/row.)  Remember that you'll need to include the todo id as a route parameter for the delete/put routes. 
+⌻ The route we just made will need to send a DELETE SQL query (using pool query!) to the database. (To delete a task/row.)  
+
+⌴ Remember that you'll need to include the todo id as a route parameter for the delete/put routes. 
 
 Example of that in here!
 https://github.com/PrimeAcademy/pinnacles-full-stack-get-post-delete-put
@@ -93,8 +95,8 @@ https://github.com/PrimeAcademy/pinnacles-full-stack-get-post-delete-put
 
 ### A user can mark to-do items as completed.
 
-⌴ Create an onclick completed button for each to do item in html table
-Event makes an http PUT request w/axios and .then to server (completed = TRUE)
+⎷ Create an onclick completed button for each to do item in html table
+⌴ Event makes an http PUT request w/axios and .then to server (completed = TRUE)
 
 ⌴ Server sends query to the Dbase to mark as complete = true.
 

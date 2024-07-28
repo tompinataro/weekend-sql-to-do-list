@@ -92,7 +92,7 @@ todosRouter.put ('/:todos_id', (req, res) => {
 todosRouter.delete('/:id', (req, res) => {
 
     const todosId = req.params.id;
-    console.log('The id from DELETE request:', todosRouterId);
+    console.log('The id from DELETE request:', todosId);
     
     const sqlText = `DELETE FROM "todos"
                     WHERE "id" = $1;`;

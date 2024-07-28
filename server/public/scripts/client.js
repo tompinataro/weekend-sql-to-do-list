@@ -61,8 +61,9 @@ function showToDoList(data) {
 // ===================== DELETE FUNCTION (Needs getTodos function in .then) =====================
 // Create an onclick delete <button> 
 
-console.log ("In deleteTask()") 
 function deleteTask(taskId) {
+  console.log ("In deleteTask()") 
+
     console.log("This is the task's id in client:", taskId);
    
     Swal.fire({
@@ -97,9 +98,10 @@ function deleteTask(taskId) {
   // end of deleteTask()
 
 // ============ UPDATE COMPLETED STATUS ==================
-  console.log ("In completeTask()")
 
   function isComplete(task_id) {
+    console.log ("In completeTask()")
+
     axios ({
       method: 'PUT',
       url: `/todos/${task_id}`,

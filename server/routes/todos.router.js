@@ -37,17 +37,17 @@ todosRouter.get('/', (req, res) => {
 todosRouter.post('/', (req, res) => {
     console.log('POST received a request!');
     console.log('\treq.body is:', req.body);
-
+    console.log('This is the req.body.text:', req.body.task);
   
     const sqlText = `
       INSERT INTO "todos" 
         ("text", "isComplete") 
         VALUES
         ($1, $2); 
-    `;
-    const sqlValues = [
-      req.body.text,
-      req.body.isComplete,
+    `;  
+    const sqlValues = [ 
+      req.body.task,
+      false
     ];
     pool.query(sqlText, sqlValues)
       .then((dbResult) => {

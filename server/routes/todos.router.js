@@ -20,7 +20,7 @@ const pool = require('../modules/pool');
 // If the query is successful, it sends the resulting data back to the client. 
 // If there's an error, it logs the error and sends a 500 Internal Server Error response.
 
-// GET Todo data
+// GET Todo data  GET_GET_GET_GET_GET_GET_GET_GET_GET_GET_GET_GET_GET_GET_GET_GET_GET_GET_GET_GET_
 todosRouter.get('/', (req, res) => {
     let queryText = `
     SELECT * FROM "todos"
@@ -38,7 +38,8 @@ todosRouter.get('/', (req, res) => {
 })
 
 
-// POST (to insert a new row)
+// POST POST_POST_POST_POST_POST_POST_POST_POST_POST_POST_POST_POST_POST_POST_POST_POST_POST_POST_
+// (POST inserts a new row)
 
 // In todos.router, make the router.post route.
 // The route we just made will need to send an INSERT INTO SQL query (using pool.query!) to the database. (To insert a new row.)
@@ -77,12 +78,16 @@ todosRouter.post('/', (req, res) => {
     
   });
 
-5.
-// The todosRouter.put('/:task_id', ...) route is defined to mark a todo item as completed. 
+
+// PUT - Route is defined to mark a todo item as completed. 
+
+// 5. The todosRouter.put('/:task_id', ...)
 // It sends an UPDATE SQL query to the database using pool.query(). 
 // If the update is successful, it sends a 200 OK response. 
 // If there's an error, it logs the error and sends a 500 Internal Server Error response.
-// PUT
+
+
+// PUT_PUT_PUT_PUT_PUT_PUTPUT_PUT_PUT_PUT_PUT_PUTPUT_PUT_PUT_PUT_PUT_PUTPUT_PUT_PUT_PUT_PUT_PUT
 todosRouter.put ('/:task_id', (req, res) => {
     const todosToChange = req.params.task_id;
     
@@ -113,7 +118,7 @@ todosRouter.put ('/:task_id', (req, res) => {
 // If the deletion is successful, it sends a 200 OK response. 
 // If there's an error, it logs the error and sends a 500 Internal Server Error response.
 
-// DELETE
+// DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_
 todosRouter.delete('/:id', (req, res) => {
 
     const todosId = req.params.id;

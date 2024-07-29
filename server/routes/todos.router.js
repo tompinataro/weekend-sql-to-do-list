@@ -1,4 +1,10 @@
+
+// 1. The todosRouter is created using the Express.js Router.
+
 const todosRouter = require('express').Router();
+
+// 2. A connection to the database is established using the pool = require
+// ('../modules/pool'); line.
 const pool = require('../modules/pool');
 
 // DB CONNECTION
@@ -8,6 +14,11 @@ const pool = require('../modules/pool');
 // (To get the to-do items!)
 // The route we just made will need to send a SELECT * FROM SQL query (using pool.query()!) to the database. 
 // NOTE: console.logs made here are displayed in terminal!!!!!!
+
+// 3. The todosRouter.get('/', ...) route is defined to retrieve all todo items from the database. 
+// It sends a SELECT * FROM SQL query to the database using pool.query(). 
+// If the query is successful, it sends the resulting data back to the client. 
+// If there's an error, it logs the error and sends a 500 Internal Server Error response.
 
 // GET Todo data
 todosRouter.get('/', (req, res) => {
@@ -33,6 +44,12 @@ todosRouter.get('/', (req, res) => {
 // The route we just made will need to send an INSERT INTO SQL query (using pool.query!) to the database. (To insert a new row.)
 // If the INSERT INTO worked, send status 201 back to the client-side.
 // When client-side receives status 201, need to call the function that that gets the to-dos data and renders it.
+
+4.
+//The todosRouter.post('/', ...) route is defined to insert a new todo item into the database. 
+// It sends an INSERT INTO SQL query to the database using pool.query(). 
+// If the insertion is successful, it sends a 200 OK response. 
+// If there's an error, it logs the error and sends a 500 Internal Server Error response.
 
 todosRouter.post('/', (req, res) => {
     console.log('POST received a request!');
@@ -60,7 +77,11 @@ todosRouter.post('/', (req, res) => {
     
   });
 
-
+5.
+// The todosRouter.put('/:task_id', ...) route is defined to mark a todo item as completed. 
+// It sends an UPDATE SQL query to the database using pool.query(). 
+// If the update is successful, it sends a 200 OK response. 
+// If there's an error, it logs the error and sends a 500 Internal Server Error response.
 // PUT
 todosRouter.put ('/:task_id', (req, res) => {
     const todosToChange = req.params.task_id;
@@ -87,6 +108,10 @@ todosRouter.put ('/:task_id', (req, res) => {
 // If the DELETE was successful, send status 202 back to client.js
 // When client.js receives status 202, call the function that gets the remaining to-dos data and renders it
 
+// 6. The todosRouter.delete('/:id', ...) route is defined to delete a todo item from the database. 
+// It sends a DELETE SQL query to the database using pool.query(). 
+// If the deletion is successful, it sends a 200 OK response. 
+// If there's an error, it logs the error and sends a 500 Internal Server Error response.
 
 // DELETE
 todosRouter.delete('/:id', (req, res) => {
@@ -108,5 +133,5 @@ todosRouter.delete('/:id', (req, res) => {
     })
 
 })
-
+// 7. The todosRouter is exported as a module using module.exports = todosRouter;.
 module.exports = todosRouter;

@@ -37,16 +37,16 @@ function showToDoList(data) {
     console.log(`Is ${task.text} complete? ${task.isComplete}`);
     if(task.isComplete === true) { //putting the idtag on line 40 took 1hr :/ 
       viewTodos.innerHTML += `
-      <tr data-testid="toDoItem">  
+      <tr data-testid="toDoItem"" class="completed">  
         <td>${task.text}</td>
         <td>${task.isComplete}</td>
-        <td><button data-testid="completeButton" onClick="completeTask(${task.id})">Task?</button></td>
+        <td>Completed!</td>
         <td><button data-testid="deleteButton" onClick="deleteTask(${task.id})">Delete Task</button></td>
       </tr>`;
     
     } else {     
       viewTodos.innerHTML += `
-      <tr>          
+      <tr data-testid="toDoItem">  
         <td>${task.text}</td>
         <td>${task.isComplete}</td>
         <td><button data-testid="completeButton" onClick="completeTask(${task.id})">Complete Task?</button></td>

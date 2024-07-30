@@ -89,14 +89,14 @@ todosRouter.post('/', (req, res) => {
 
 // PUT_PUT_PUT_PUT_PUT_PUTPUT_PUT_PUT_PUT_PUT_PUTPUT_PUT_PUT_PUT_PUT_PUTPUT_PUT_PUT_PUT_PUT_PUT
 todosRouter.put ('/:task_id', (req, res) => {
-    const todosToChange = req.params.task_id;
+    const todoToChange = req.params.task_id;
     
     const sqlText = `
         UPDATE "todos"
             SET "isComplete" = TRUE
             WHERE "id" = $1;
             `
-    const sqlValues = [taskToChange]
+    const sqlValues = [todoToChange]
     pool.query(sqlText, sqlValues)
     .then(dbResult => {
         res.sendStatus(200);

@@ -73,7 +73,7 @@ function deleteTask(taskId) {
       confirmButtonText: "Yes, Delete",
       denyButtonText: `No, Do Not Delete`
     }).then((result) => {
-  
+
       if (result.isConfirmed) {
         Swal.fire("Deleted", "", "success");
         axios({
@@ -84,8 +84,8 @@ function deleteTask(taskId) {
         .then((response) => {
           console.log(`${taskId} has been deleted:`, response);
       
-          showToDoList();
-        })
+          getToDoList()        })
+
         .catch((err) => {
           console.log(`${taskId} did not get deleted:`, err);
         })
@@ -99,7 +99,7 @@ function deleteTask(taskId) {
 
 // ============ UPDATE COMPLETED STATUS ==================
 
-  function isComplete(task_id) {
+  function completeTask(task_id) {
     console.log ("In completeTask()")
 
     axios ({
@@ -107,9 +107,10 @@ function deleteTask(taskId) {
       url: `/todos/${task_id}`,
       data: {status: 'true'}
     })
-    .then((response) => {
-      showToDoList();
-    })
+    .then((response ) => {
+      getToDoList();
+    })  //end .then
+
     .catch((error) => {
       console.log('error updating Transfer status',error)
     })
